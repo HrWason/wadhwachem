@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chemistry Academy | Inspiring the Next Generation of Chemists</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-800 shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 text-white">
+      
+      <!-- Logo -->
+      <h1 class="text-2xl font-bold tracking-wide">
+        Wadhwa<span class="text-cyan-300">Chem</span>
+      </h1>
+
+      <!-- Links -->
+      <ul class="hidden md:flex space-x-8 text-lg">
+        <li><a href="#home" class="hover:text-cyan-300 transition">Home</a></li>
+        <li><a href="/courses.html" class="hover:text-cyan-300 transition">Courses</a></li>
+        <li><a href="/about.html" class="hover:text-cyan-300 transition">About</a></li>
+        <li><a href="/contact.html" class="hover:text-cyan-300 transition">Contact</a></li>
+      </ul>
+
+      <!-- Enroll Button -->
+      <a href="/contact.html#enroll" class="hidden md:inline-block bg-cyan-400 text-black font-semibold px-5 py-2 rounded-full shadow-md hover:bg-cyan-300 transition">
+        Enroll Now
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-toggle" class="md:hidden text-cyan-300 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16m0 6H4" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="md:hidden hidden bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-800 px-6 pb-4">
+      <ul class="space-y-3 text-white text-lg">
+        <li><a href="#home" class="block hover:text-cyan-300 transition">Home</a></li>
+        <li><a href="#courses" class="block hover:text-cyan-300 transition">Courses</a></li>
+        <li><a href="#about" class="block hover:text-cyan-300 transition">About</a></li>
+        <li><a href="#contact" class="block hover:text-cyan-300 transition">Contact</a></li>
+        <li><a href="#enroll" class="block bg-cyan-400 text-black font-semibold px-5 py-2 rounded-full text-center hover:bg-cyan-300 transition">Enroll Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative overflow-hidden bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-800 text-white py-32 px-6 text-center mt-20">
+    <div class="max-w-4xl mx-auto relative z-10">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Wadhwa Chemistry Academy</h1>
+      <p class="text-lg md:text-xl mb-8 text-blue-100">
+        Learn. Experiment. Discover. Where science meets curiosity and innovation.
+      </p>
+      <a href="#courses"
+        class="bg-white text-blue-800 px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-blue-100 transition">
+        Explore Courses
+      </a>
+    </div>
+    <div class="absolute inset-0 opacity-20">
+      <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_u4yrau.json"
+        background="transparent" speed="1" loop autoplay></lottie-player>
+    </div>
+  </section>
+
+  <script>
+    // 🔹 Mobile menu toggle
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+      document.getElementById("mobile-menu").classList.toggle("hidden");
+    });
+  </script>
+
+  
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-8 bg-white text-center">
+    <h2 class="text-3xl font-bold mb-4 text-blue-900">About Us</h2>
+    <p class="max-w-3xl mx-auto text-gray-600 text-lg leading-relaxed">
+      We are a premier coaching institute dedicated to making chemistry engaging and accessible for students preparing for high school, college, and competitive exams. Our interactive teaching methods and hands-on lab sessions ensure deep conceptual understanding.
+    </p>
+  </section>
+
+  <!-- Courses Section -->
+  <section id="courses" class="py-20 bg-blue-50 text-center">
+    <h2 class="text-3xl font-bold text-blue-900 mb-10">Our Courses</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+      <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition">
+        <img src="https://img.icons8.com/color/96/000000/test-tube.png" class="mx-auto mb-4" />
+        <h3 class="text-xl font-semibold mb-2">High School Chemistry</h3>
+        <p class="text-gray-600">Build a strong foundation in chemical reactions, atomic structure, and periodic properties.</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition">
+        <img src="https://img.icons8.com/color/96/000000/laboratory.png" class="mx-auto mb-4" />
+        <h3 class="text-xl font-semibold mb-2">JEE / NEET Preparation</h3>
+        <p class="text-gray-600">Target-focused learning modules designed to crack India's toughest exams.</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition">
+        <img src="https://img.icons8.com/color/96/000000/microscope.png" class="mx-auto mb-4" />
+        <h3 class="text-xl font-semibold mb-2">Organic Chemistry Mastery</h3>
+        <p class="text-gray-600">Dive into the fascinating world of carbon compounds with visual mechanisms and problem-solving.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Molecule Showcase Section -->
+  <section class="py-20 bg-white text-center">
+    <h2 class="text-3xl font-bold text-blue-900 mb-8">Molecule Spotlight</h2>
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-10">
+      <img src="/assets/Benzene_Conformer3D_medium.png" alt="Benzene molecule" class="w-64 h-64 object-contain animate-pulse" />
+      <div class="text-left">
+        <h3 class="text-2xl font-semibold mb-2">Benzene (C₆H₆)</h3>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          A cornerstone of organic chemistry, benzene is an aromatic hydrocarbon known for its ring structure and stability.
+          Understanding benzene opens the door to complex chemical synthesis and reactions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20 bg-blue-900 text-white text-center">
+    <h2 class="text-3xl font-bold mb-8">What Our Students Say</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+      <div class="bg-blue-800 p-6 rounded-2xl shadow-md">
+        <p class="italic mb-3">"Best chemistry classes! Complex topics suddenly made sense."</p>
+        <h4 class="font-semibold">– Aisha, Grade 12</h4>
+      </div>
+      <div class="bg-blue-800 p-6 rounded-2xl shadow-md">
+        <p class="italic mb-3">"Loved the organic sessions and animations that explained reactions visually."</p>
+        <h4 class="font-semibold">– Rohan, JEE Aspirant</h4>
+      </div>
+      <div class="bg-blue-800 p-6 rounded-2xl shadow-md">
+        <p class="italic mb-3">"The teachers here make chemistry truly exciting!"</p>
+        <h4 class="font-semibold">– Priya, NEET Student</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-gray-300 py-8 text-center">
+  <p>© 2025 Wadhwa Chemistry Academy | All Rights Reserved</p>
+  <p class="mt-2 text-sm">
+    Designed & Developed by 
+    <a href="https://hrwason.com" class="text-blue-400 hover:underline">HrWason WebSolutions</a>
+  </p>
+
+  <div class="flex justify-center gap-6 mt-4 text-sm">
+    <a href="#" class="hover:text-blue-400 transition">LinkedIn</a>
+    <a href="#" class="hover:text-blue-400 transition">Twitter</a>
+    <a href="#" class="hover:text-blue-400 transition">Instagram</a>
+  </div>
+</footer>
+
+  
+</body>
+</html>
