@@ -8,27 +8,6 @@
   <!-- Favicon -->
   <link rel="icon" href="assets/favicon.png" type="image/png" />
 
-  <!-- Primary SEO Meta Tags -->
-  <meta name="title" content="Contact | Wadhwa Chemistry Academy">
-  <meta name="description" content="Get in touch with Wadhwa Chemistry Academy for inquiries about courses, enrollment, and other questions.">
-  <meta name="keywords" content="Chemistry courses, JEE Chemistry, NEET Chemistry, High School Chemistry, Organic Chemistry, Inorganic Chemistry, Physical Chemistry, Wadhwa Chemistry Academy, best chemistry tutor in India, chemistry tution in ambala, chemistry tution in chandigarh, best chemistry teacher near me">
-  <meta name="author" content="Wadhwa Chemistry Academy">
-  <meta name="robots" content="index, follow">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://wadhwachem.hrwason.com/contact.html">
-  <meta property="og:title" content="Contact | Wadhwa Chemistry Academy">
-  <meta property="og:description" content="Get in touch with Wadhwa Chemistry Academy for inquiries about courses, enrollment, and other questions.">
-  <meta property="og:image" content="https://wadhwachem.hrwason.com/assets/Benzene_Conformer3D_medium.png">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://wadhwachem.hrwason.com/contact.html">
-  <meta property="twitter:title" content="Contact | Wadhwa Chemistry Academy">
-  <meta property="twitter:description" content="Get in touch with Wadhwa Chemistry Academy for inquiries about courses, enrollment, and other questions.">
-  <meta property="twitter:image" content="https://wadhwachem.hrwason.com/assets/Benzene_Conformer3D_medium.png">
-
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -73,12 +52,12 @@
       <p class="text-lg md:text-xl mb-8 text-blue-100">Have questions or want to join our courses? Reach out to us and we’ll get back to you soon!</p>
     </div>
   </section>
-  
 
   <!-- General Inquiry Form -->
   <section id="contact" class="py-20 px-6 max-w-4xl mx-auto">
     <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">General Inquiry</h2>
-    <form class="bg-white shadow-lg rounded-2xl p-8 space-y-6" method="POST" action="https://mail-server-00nm.onrender.com/send-email">
+    <form class="bg-white shadow-lg rounded-2xl p-8 space-y-6" method="POST">
+      <div class="form-message mb-4 text-center font-semibold"></div>
       <input type="hidden" name="client" value="wadhwachem"/>
       <div>
         <label class="block text-gray-700 font-semibold mb-2" for="contact-name">Full Name</label>
@@ -92,16 +71,23 @@
         <label class="block text-gray-700 font-semibold mb-2" for="contact-message">Message</label>
         <textarea id="contact-message" name="message" placeholder="Your message" rows="5" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400" required></textarea>
       </div>
-      <button type="submit" class="bg-cyan-400 text-black font-semibold px-6 py-2 rounded-full shadow-md hover:bg-cyan-300 transition">Send Message</button>
+      <button type="submit" class="bg-cyan-400 text-black font-semibold px-6 py-2 rounded-full shadow-md hover:bg-cyan-300 transition flex items-center justify-center gap-2">
+        <span class="btn-text">Send Message</span>
+        <svg class="spinner hidden animate-spin h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4l-3 3 3 3H4z"/>
+        </svg>
+      </button>
     </form>
   </section>
-  
 
   <!-- Enroll Form -->
   <section id="enroll" class="py-20 px-6 bg-blue-50">
     <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">Enroll for a Course</h2>
-    <form class="bg-white shadow-lg rounded-2xl p-8 max-w-3xl mx-auto space-y-6" method="POST" action="https://mail-server-00nm.onrender.com/send-email">
+    <form class="bg-white shadow-lg rounded-2xl p-8 max-w-3xl mx-auto space-y-6" method="POST">
+      <div class="form-message mb-4 text-center font-semibold"></div>
       <input type="hidden" name="client" value="wadhwachem"/>
+      <input type="hidden" name="message" id="enroll-message"/>
       <div>
         <label class="block text-gray-700 font-semibold mb-2" for="enroll-name">Full Name</label>
         <input id="enroll-name" name="name" type="text" placeholder="Your Name" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400" required/>
@@ -111,7 +97,6 @@
         <input id="enroll-email" name="email" type="email" placeholder="you@example.com" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400" required/>
       </div>
       <div>
-        <input type="hidden" name="message" id="enroll-message">
         <label class="block text-gray-700 font-semibold mb-2" for="enroll-course">Select Course</label>
         <select id="enroll-course" name="course" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400" required>
           <option value="">Select a course</option>
@@ -122,84 +107,82 @@
           <option value="JEE / NEET Preparation">JEE / NEET Preparation</option>
         </select>
       </div>
-      <button type="submit" class="bg-cyan-400 text-black font-semibold px-6 py-2 rounded-full shadow-md hover:bg-cyan-300 transition">Enroll Now</button>
+      <button type="submit" class="bg-cyan-400 text-black font-semibold px-6 py-2 rounded-full shadow-md hover:bg-cyan-300 transition flex items-center justify-center gap-2">
+        <span class="btn-text">Enroll Now</span>
+        <svg class="spinner hidden animate-spin h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4l-3 3 3 3H4z"/>
+        </svg>
+      </button>
     </form>
   </section>
 
-<!-- Footer -->
-<footer class="bg-slate-900 text-gray-300 py-12 text-center">
-  <p class="text-sm">© 2025 Wadhwa Chemistry Academy | All Rights Reserved</p>
-  <p class="mt-2 text-sm">
-    Designed & Developed by 
-    <a href="https://hrwason.com" class="text-blue-400 hover:underline">HrWason WebSolutions</a>
-  </p>
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-gray-300 py-12 text-center">
+    <p class="text-sm">© 2025 Wadhwa Chemistry Academy | All Rights Reserved</p>
+    <p class="mt-2 text-sm">
+      Designed & Developed by 
+      <a href="https://hrwason.com" class="text-blue-400 hover:underline">HrWason WebSolutions</a>
+    </p>
+  </footer>
 
-  <!-- Contact Links -->
-  <div class="flex justify-center gap-6 mt-6 text-sm">
-    <!-- WhatsApp -->
-    <a href="https://wa.me/12345678901" target="_blank" class="flex items-center gap-2 hover:text-cyan-400 transition">
-      <img src="https://img.icons8.com/color/24/000000/whatsapp.png" alt="WhatsApp">
-      +1 (234) 567-8901
-    </a>
-
-    <!-- Email -->
-    <a href="mailto:info@wadhwachem.com" class="flex items-center gap-2 hover:text-cyan-400 transition">
-      <img src="https://img.icons8.com/color/24/000000/email.png" alt="Email">
-      info@wadhwachem.com
-    </a>
-
-    <!-- Instagram -->
-    <a href="https://instagram.com/wadhwachem" target="_blank" class="flex items-center gap-2 hover:text-cyan-400 transition">
-      <img src="https://img.icons8.com/color/24/000000/instagram-new.png" alt="Instagram">
-      @wadhwachem
-    </a>
-  </div>
-</footer>
-
-  <!-- Mobile Menu Script -->
+  <!-- Scripts -->
   <script>
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('mobile-menu');
     toggle.addEventListener('click', () => menu.classList.toggle('hidden'));
-  </script>
 
-<script>
-document.querySelectorAll("form").forEach(form => {
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    document.querySelectorAll("form").forEach(form => {
+      const msgContainer = form.querySelector(".form-message");
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const btnText = submitBtn.querySelector(".btn-text");
+      const spinner = submitBtn.querySelector(".spinner");
 
-    // If this is the enroll form, set 'message' to selected course
-    const courseSelect = form.querySelector('select[name="course"]');
-    if (courseSelect) {
-      const hiddenMsg = form.querySelector('input[name="message"]') || document.createElement('input');
-      hiddenMsg.type = 'hidden';
-      hiddenMsg.name = 'message';
-      hiddenMsg.value = courseSelect.value;
-      form.appendChild(hiddenMsg);
-    }
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        msgContainer.textContent = "";
+        msgContainer.classList.remove("text-green-500", "text-red-500");
 
-    const formData = new FormData(form);
+        // If enroll form, set message to course
+        const courseSelect = form.querySelector('select[name="course"]');
+        if (courseSelect) {
+          form.querySelector('input[name="message"]').value = courseSelect.value;
+        }
 
-    try {
-      const response = await fetch("https://mail-server-00nm.onrender.com/send-email", {
-        method: "POST",
-        body: formData
+        const formData = new FormData(form);
+
+        // Show spinner
+        btnText.textContent = "Sending...";
+        spinner.classList.remove("hidden");
+        submitBtn.disabled = true;
+
+        try {
+          const response = await fetch("https://mail-server-00nm.onrender.com/send-email", {
+            method: "POST",
+            body: formData
+          });
+          const result = await response.json();
+
+          if (result.success) {
+            msgContainer.textContent = "✅ Message sent successfully!";
+            msgContainer.classList.add("text-green-500");
+            form.reset();
+          } else {
+            msgContainer.textContent = "⚠️ " + result.message;
+            msgContainer.classList.add("text-red-500");
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          msgContainer.textContent = "❌ Failed to send message. Please try again.";
+          msgContainer.classList.add("text-red-500");
+        } finally {
+          btnText.textContent = courseSelect ? "Enroll Now" : "Send Message";
+          spinner.classList.add("hidden");
+          submitBtn.disabled = false;
+        }
       });
-      const result = await response.json();
-
-      if (result.success) {
-        alert("✅ Message sent successfully!");
-        form.reset();
-      } else {
-        alert("⚠️ " + result.message);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("❌ Failed to send message. Please try again.");
-    }
-  });
-});
-</script>
+    });
+  </script>
 
 </body>
 </html>
