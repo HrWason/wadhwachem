@@ -1,0 +1,11 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Redirect clean URLs to .html files internally
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^([a-zA-Z0-9_-]+)$ $1.html [L]
+
+# Optional: redirect /index.html to /
+RewriteCond %{THE_REQUEST} /index\.html
+RewriteRule ^index\.html$ / [R=301,L]
