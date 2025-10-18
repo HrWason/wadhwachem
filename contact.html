@@ -128,64 +128,62 @@
 
   <!-- Scripts -->
   <script>
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  toggle.addEventListener('click', () => menu.classList.toggle('hidden'));
-
   document.querySelectorAll("form").forEach(form => {
-    const msgContainer = form.querySelector(".form-message");
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const btnText = submitBtn.querySelector(".btn-text");
-    const spinner = submitBtn.querySelector(".spinner");
+  const msgContainer = form.querySelector(".form-message");
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const btnText = submitBtn?.querySelector(".btn-text");
+  const spinner = submitBtn?.querySelector(".spinner");
+  const courseSelect = form.querySelector('select[name="course"]');
+  const isEnrollForm = !!courseSelect;
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      msgContainer.textContent = "";
-      msgContainer.classList.remove("text-green-500", "text-red-500");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!msgContainer) return;
 
-      // If enroll form, set message to selected course
-      const courseSelect = form.querySelector('select[name="course"]');
-      if (courseSelect) {
-        form.querySelector('input[name="message"]').value = courseSelect.value;
-      }
+    msgContainer.textContent = "";
+    msgContainer.classList.remove("text-green-500", "text-red-500");
 
-      const formData = new FormData(form);
+    // Only for enroll form, set hidden message to selected course
+    if (isEnrollForm) {
+      const hiddenMessage = form.querySelector('input[name="message"]');
+      if (hiddenMessage && courseSelect) hiddenMessage.value = courseSelect.value;
+    }
 
-      // Show spinner
-      btnText.textContent = "Sending...";
-      spinner.classList.remove("hidden");
-      submitBtn.disabled = true;
+    const formData = new FormData(form);
 
-      try {
-        const response = await fetch("https://mail-server-00nm.onrender.com/send-email", {
-          method: "POST",
-          body: formData
-        });
-        const result = await response.json();
+    // Show spinner
+    if (btnText) btnText.textContent = "Sending...";
+    if (spinner) spinner.classList.remove("hidden");
+    if (submitBtn) submitBtn.disabled = true;
 
-        if (result.success) {
-          if (courseSelect) {
-            msgContainer.textContent = `✅ You have successfully enrolled in ${courseSelect.value}!`;
-          } else {
-            msgContainer.textContent = "✅ Message sent successfully!";
-          }
-          msgContainer.classList.add("text-green-500");
-          form.reset();
-        } else {
-          msgContainer.textContent = "⚠️ " + result.message;
-          msgContainer.classList.add("text-red-500");
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        msgContainer.textContent = "❌ Failed to send message. Please try again.";
+    try {
+      const response = await fetch("https://mail-server-00nm.onrender.com/send-email", {
+        method: "POST",
+        body: formData
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        msgContainer.textContent = isEnrollForm
+          ? `✅ You have successfully enrolled in ${courseSelect.value}!`
+          : "✅ Message sent successfully!";
+        msgContainer.classList.add("text-green-500");
+        form.reset();
+      } else {
+        msgContainer.textContent = "⚠️ " + result.message;
         msgContainer.classList.add("text-red-500");
-      } finally {
-        btnText.textContent = courseSelect ? "Enroll Now" : "Send Message";
-        spinner.classList.add("hidden");
-        submitBtn.disabled = false;
       }
-    });
+    } catch (error) {
+      console.error("Error:", error);
+      msgContainer.textContent = "❌ Failed to send message. Please try again.";
+      msgContainer.classList.add("text-red-500");
+    } finally {
+      if (btnText) btnText.textContent = isEnrollForm ? "Enroll Now" : "Send Message";
+      if (spinner) spinner.classList.add("hidden");
+      if (submitBtn) submitBtn.disabled = false;
+    }
   });
+});
 </script>
 
 </body>
