@@ -4,6 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Wadhwa Chemistry Academy</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+
+  <!-- Primary SEO Meta Tags -->
+  <meta name="title" content="Contact | Wadhwa Chemistry Academy">
+  <meta name="description" content="Get in touch with Wadhwa Chemistry Academy for inquiries about courses, enrollment, and other questions.">
+  <meta name="keywords" content="Chemistry courses, JEE Chemistry, NEET Chemistry, High School Chemistry, Organic Chemistry, Inorganic Chemistry, Physical Chemistry, Wadhwa Chemistry Academy, best chemistry tutor in India, chemistry tution in ambala, chemistry tution in chandigarh, best chemistry teacher near me">
+  <meta name="author" content="Wadhwa Chemistry Academy">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wadhwachem.hrwason.com/contact.html">
+  <meta property="og:title" content="Contact | Wadhwa Chemistry Academy">
+  <meta property="og:description" content="Get in touch with Wadhwa Chemistry Academy for inquiries about courses, enrollment, and other questions.">
+  <meta property="og:image" content="https://wadhwachem.hrwason.com/assets/Benzene_Conformer3D_medium.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wadhwachem.hrwason.com/contact.html">
+  <meta property="twitter:title" content="Contact | Wadhwa Chemistry Academy">
+  <meta property="twitter:description" content="Get in touch with Wadhwa Chemistry Academy for inquiries about courses, enrollment, and other questions.">
+  <meta property="twitter:image" content="https://wadhwachem.hrwason.com/assets/Benzene_Conformer3D_medium.png">
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 text-gray-800 font-sans">
@@ -85,6 +111,7 @@
         <input id="enroll-email" name="email" type="email" placeholder="you@example.com" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400" required/>
       </div>
       <div>
+        <input type="hidden" name="message" id="enroll-message">
         <label class="block text-gray-700 font-semibold mb-2" for="enroll-course">Select Course</label>
         <select id="enroll-course" name="course" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400" required>
           <option value="">Select a course</option>
@@ -99,19 +126,35 @@
     </form>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-slate-900 text-gray-300 py-8 text-center">
-    <p>© 2025 Wadhwa Chemistry Academy | All Rights Reserved</p>
-    <p class="mt-2 text-sm">
-      Designed & Developed by 
-      <a href="https://hrwason.com" class="text-blue-400 hover:underline">HrWason WebSolutions</a>
-    </p>
-    <div class="flex justify-center gap-6 mt-4 text-sm">
-      <a href="#" class="hover:text-blue-400 transition">LinkedIn</a>
-      <a href="#" class="hover:text-blue-400 transition">Twitter</a>
-      <a href="#" class="hover:text-blue-400 transition">Instagram</a>
-    </div>
-  </footer>
+<!-- Footer -->
+<footer class="bg-slate-900 text-gray-300 py-12 text-center">
+  <p class="text-sm">© 2025 Wadhwa Chemistry Academy | All Rights Reserved</p>
+  <p class="mt-2 text-sm">
+    Designed & Developed by 
+    <a href="https://hrwason.com" class="text-blue-400 hover:underline">HrWason WebSolutions</a>
+  </p>
+
+  <!-- Contact Links -->
+  <div class="flex justify-center gap-6 mt-6 text-sm">
+    <!-- WhatsApp -->
+    <a href="https://wa.me/12345678901" target="_blank" class="flex items-center gap-2 hover:text-cyan-400 transition">
+      <img src="https://img.icons8.com/color/24/000000/whatsapp.png" alt="WhatsApp">
+      +1 (234) 567-8901
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:info@wadhwachem.com" class="flex items-center gap-2 hover:text-cyan-400 transition">
+      <img src="https://img.icons8.com/color/24/000000/email.png" alt="Email">
+      info@wadhwachem.com
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com/wadhwachem" target="_blank" class="flex items-center gap-2 hover:text-cyan-400 transition">
+      <img src="https://img.icons8.com/color/24/000000/instagram-new.png" alt="Instagram">
+      @wadhwachem
+    </a>
+  </div>
+</footer>
 
   <!-- Mobile Menu Script -->
   <script>
@@ -119,10 +162,21 @@
     const menu = document.getElementById('mobile-menu');
     toggle.addEventListener('click', () => menu.classList.toggle('hidden'));
   </script>
+
 <script>
 document.querySelectorAll("form").forEach(form => {
   form.addEventListener("submit", async (e) => {
-    e.preventDefault(); // stop full reload
+    e.preventDefault();
+
+    // If this is the enroll form, set 'message' to selected course
+    const courseSelect = form.querySelector('select[name="course"]');
+    if (courseSelect) {
+      const hiddenMsg = form.querySelector('input[name="message"]') || document.createElement('input');
+      hiddenMsg.type = 'hidden';
+      hiddenMsg.name = 'message';
+      hiddenMsg.value = courseSelect.value;
+      form.appendChild(hiddenMsg);
+    }
 
     const formData = new FormData(form);
 
@@ -131,12 +185,11 @@ document.querySelectorAll("form").forEach(form => {
         method: "POST",
         body: formData
       });
-
       const result = await response.json();
 
       if (result.success) {
         alert("✅ Message sent successfully!");
-        form.reset(); // clear form
+        form.reset();
       } else {
         alert("⚠️ " + result.message);
       }
